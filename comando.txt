@@ -42,6 +42,7 @@ CREATE TABLE VIDEOJUEGO(
     stock INT,
     nombre_videojuego VARCHAR(20),
     url_videojuego VARCHAR(20),
+    id_carrito INT,
     FOREIGN KEY(id_carrito) REFERENCES CARRITO(id_carrito)
 );
 
@@ -63,7 +64,7 @@ CREATE TABLE DESEADOSxVIDEOJUEGOS (
     id_deseados INT,
     id_videojuego INT,
     FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados),
-    FOREIGN KEY (id_videojuego) REFERENCES videojuegos(id_videojuego)
+    FOREIGN KEY (id_videojuego) REFERENCES videojuego(id_videojuego)
 );
 
 
@@ -71,7 +72,7 @@ CREATE TABLE VALORACIONxVIDEOJUEGO (
     id_valoracion INT,
     id_videojuego INT,
     FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion),
-    FOREIGN KEY (id_videojuego) REFERENCES videojuegos(id_videojuego)
+    FOREIGN KEY (id_videojuego) REFERENCES videojuego(id_videojuego)
 );
 
 CREATE TABLE USUARIOxVALORACION (
