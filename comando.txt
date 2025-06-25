@@ -8,6 +8,7 @@ CREATE TABLE CARRITO(
     id_carrito SERIAL PRIMARY KEY,
     cantidad_videojuegos INTEGER(10) NOT NULL,
     boleta VARCHAR(100),
+    FOREIGN KEY(boleta) REFERENCES PROCESO_DE_COMPRA(boleta),
     FOREIGN KEY(id_usuario) REFERENCES USUARIO(id_usuario)
 );
 
