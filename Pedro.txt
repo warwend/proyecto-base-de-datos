@@ -1,19 +1,19 @@
 
-CRATE TABLE DESEADOSxVIDEOJUEGOS (
+CREATE TABLE DESEADOSxVIDEOJUEGOS (
     id_deseados INT(20),
     id_videojuego INT(10),
     FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados),
     FOREIGN KEY (id_videojuego) REFERENCES videojuegos(id_videojuego)
 );
 
-CRATE TABLE VALORACION (
+CREATE TABLE VALORACION (
     id_valoracion INT(20) PRIMARY KEY,
     valoracion VARCHAR(500),
     id_ranking INT(10),
     FOREIGN KEY (id_ranking) REFERENCES ranking(id_ranking)
 );
 
-CRATE TABLE USUARIO (
+CREATE TABLE USUARIO (
     id_usuario INT(20) PRIMARY KEY,
     contraseña_usuario VARCHAR(20),
     email_usuario VARCHAR(20),
@@ -23,21 +23,21 @@ CRATE TABLE USUARIO (
     FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
-CRATE TABLE VALORACIONxVIDEOJUEGO (
+CREATE TABLE VALORACIONxVIDEOJUEGO (
     id_valoracion INT(10),
     id_videojuego INT(10),
     FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion),
     FOREIGN KEY (id_videojuego) REFERENCES videojuegos(id_videojuego)
 );
 
-CRATE TABLE USUARIOxVALORACION (
+CREATE TABLE USUARIOxVALORACION (
     id_usuario INT(10),
     id_valoracion INT(10),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion)
 );
 
-CRATE TABLE DESEADOSxUSUARIO (
+CREATE TABLE DESEADOSxUSUARIO (
     id_deseados INT(10),
     id_usuario INT(10),
     FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados),
