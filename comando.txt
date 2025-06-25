@@ -19,6 +19,13 @@ CREATE TABLE USUARIO (
     FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
+CREATE TABLE proceso_de_compra ( 
+  boleta VARCHAR(1000) PRIMARY KEY, 
+  metodo_pago VARCHAR(20),
+  id_usuario INT,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
 CREATE TABLE CARRITO(
     id_carrito SERIAL PRIMARY KEY,
     cantidad_videojuegos INT NOT NULL,
@@ -35,13 +42,6 @@ CREATE TABLE VIDEOJUEGO(
     nombre_videojuego VARCHAR(20),
     url_videojuego VARCHAR(20),
     FOREIGN KEY(id_carrito) REFERENCES CARRITO(id_carrito)
-);
-
-CREATE TABLE proceso_de_compra ( 
-  boleta VARCHAR(1000) PRIMARY KEY, 
-  metodo_pago VARCHAR(20),
-  id_usuario INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
 CREATE TABLE deseados (
