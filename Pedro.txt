@@ -1,0 +1,26 @@
+
+CRATE TABLE DESEADOSxVIDEOJUEGOS (
+    id_deseados INT(20),
+    id_videojuego INT(10),
+    FOREING KEY (id_deseados) REFERENCES deseados(id_deseados),
+    FOREING KEY (id_videojuego) REFERENCES videojuegos(id_videojuego)
+);
+
+CRATE TABLE VALORACION (
+    id_valoracion INT(20) PRIMARI KEY,
+    valoracion VARCHAR(500),
+    id_ranking INT(10),
+    FOREING KEY (id_ranking) REFERENCES ranking(id_ranking)
+);
+
+CRATE TABLE USUARIO (
+    id_usuario INT(20) PRIMARI KEY,
+    contraseña_usuario VARCHAR(20),
+    email_usuario VARCHAR(20),
+    ubicación_usuario VARCHAR(20),
+    nombre_usuario VARCHAR(15),
+    id_rol INT(20),
+    FOREING KEY (id_rol) REFERENCES rol(id_rol)
+);
+
+
