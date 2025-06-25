@@ -1,2 +1,24 @@
-asdasg
-asd123
+CREATE TABLE ROL (
+    id_rol SERIAL PRIMARY KEY,
+    permisos VARCHAR(100) NOT NULL,
+    nombre_rol VARCHAR(100)
+);
+
+CREATE TABLE CARRITO(
+    id_carrito SERIAL PRIMARY KEY,
+    cantidad_videojuegos INTEGER(10) NOT NULL,
+    boleta VARCHAR(100),
+    CONSTRAINT fk_id_usuario
+      FOREIGN KEY (id_usuario)
+      REFERENCES USUARIO(id_usuario)
+      ON DELETE SET NULL
+);
+
+CREATE TABLE VIDEOJUEGO(
+    id_videojuego SERIAL PRIMARY KEY,
+    url_imagen VARCHAR(20),
+    tipo VARCHAR(20),
+    stock INTEGER(100),
+    nombre_videojuego VARCHAR(20),
+    url_videojuego VARCHAR(20)
+);
