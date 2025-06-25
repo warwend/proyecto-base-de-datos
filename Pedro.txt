@@ -23,4 +23,26 @@ CRATE TABLE USUARIO (
     FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
+CRATE TABLE VALORACIONxVIDEOJUEGO (
+    id_valoracion INT(10),
+    id_videojuego INT(10),
+    FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion),
+    FOREIGN KEY (id_videojuego) REFERENCES videojuegos(id_videojuego)
+);
+
+CRATE TABLE USUARIOxVALORACION (
+    id_usuario INT(10),
+    id_valoracion INT(10),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion)
+);
+
+CRATE TABLE DESEADOSxUSUARIO (
+    id_deseados INT(10),
+    id_usuario INT(10),
+    FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+
 
