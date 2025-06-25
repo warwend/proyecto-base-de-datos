@@ -7,14 +7,14 @@ CRATE TABLE DESEADOSxVIDEOJUEGOS (
 );
 
 CRATE TABLE VALORACION (
-    id_valoracion INT(20) PRIMARI KEY,
+    id_valoracion INT(20) PRIMARY KEY,
     valoracion VARCHAR(500),
     id_ranking INT(10),
     FOREING KEY (id_ranking) REFERENCES ranking(id_ranking)
 );
 
 CRATE TABLE USUARIO (
-    id_usuario INT(20) PRIMARI KEY,
+    id_usuario INT(20) PRIMARY KEY,
     contraseña_usuario VARCHAR(20),
     email_usuario VARCHAR(20),
     ubicación_usuario VARCHAR(20),
