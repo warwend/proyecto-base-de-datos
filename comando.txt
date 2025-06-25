@@ -8,10 +8,7 @@ CREATE TABLE CARRITO(
     id_carrito SERIAL PRIMARY KEY,
     cantidad_videojuegos INTEGER(10) NOT NULL,
     boleta VARCHAR(100),
-    CONSTRAINT fk_id_usuario
-      FOREIGN KEY (id_usuario)
-      REFERENCES USUARIO(id_usuario)
-      ON DELETE SET NULL
+    FOREIGN KEY(id_usuario) REFERENCES USUARIO(id_usuario)
 );
 
 CREATE TABLE VIDEOJUEGO(
@@ -20,5 +17,6 @@ CREATE TABLE VIDEOJUEGO(
     tipo VARCHAR(20),
     stock INTEGER(100),
     nombre_videojuego VARCHAR(20),
-    url_videojuego VARCHAR(20)
+    url_videojuego VARCHAR(20),
+    FOREIGN KEY(id_carrito) REFERENCES CARRITO(id_carrito)
 );
