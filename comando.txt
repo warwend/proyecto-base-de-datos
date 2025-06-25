@@ -1,3 +1,8 @@
+CREATE TABLE ranking (
+  id_ranking SERIAL PRIMARY KEY,
+  tipo_ranking VARCHAR(20),
+);
+
 CREATE TABLE ROL (
     id_rol SERIAL PRIMARY KEY,
     permisos VARCHAR(100) NOT NULL,
@@ -23,15 +28,10 @@ CREATE TABLE VIDEOJUEGO(
 );
 
 CREATE TABLE proceso_de_compra ( 
-  boleta VARCHAR(1000) SERIAL PRIMARY KEY, 
+  boleta VARCHAR(1000) PRIMARY KEY, 
   metodo_pago VARCHAR(20),
   id_usuario INT(10),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-);
-
-CREATE TABLE ranking (
-  id_ranking INT(10) SERIAL PRIMARY KEY,
-  tipo_ranking VARCHAR(20),
 );
 
 CREATE TABLE deseados (
