@@ -1,6 +1,6 @@
 CREATE TABLE ranking (
   id_ranking SERIAL PRIMARY KEY,
-  tipo_ranking VARCHAR(20),
+  tipo_ranking VARCHAR(20)
 );
 
 CREATE TABLE ROL (
