@@ -1,1 +1,27 @@
+CREATE TABLE empleados( id SERIAL PRIMARY KEY, nombre VARCHAR(100) NOT NULL, APELLIDO VARCHAR(100), correo VARCHAR(150) UNIQUE, salario NUMERIC(10,2), FECHA_INGRESO DATE DEFAULT CURRENT_DATE);
 
+CREATE TABLE proceso_de_compra ( 
+  boleta VARCHAR(1000) SERIAL PRIMARY KEY, 
+  metodo_pago VARCHAR(20),
+  id_usuario INT(10),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+/////////////////////////////////////////////////////////
+CREATE TABLE ranking (
+  id_ranking INT(10) SERIAL PRIMARY KEY,
+  tipo_ranking VARCHAR(20),
+);
+//////////////////////////////////////////////////////////
+CREATE TABLE deseados (
+  id_deseados INT(10) SERIAL PRIMARY KEY,
+  lista_de_deseados VARCHAR(200),
+  id_ranking INT(10),
+  FOREIGN KEY (id_ranking) REFERENCES ranking(id_ranking)
+);
+//////////////////////////////////////////////////////////
+CREATE TABLE deseadosxusuario (
+  id_deseados INT(10),
+  id_usuario INT(10),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+  FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados)
+//////////////////////////////////////////////////////////
