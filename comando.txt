@@ -6,22 +6,22 @@ CREATE TABLE ranking (
 CREATE TABLE ROL (
     id_rol SERIAL PRIMARY KEY,
     permisos VARCHAR(100) NOT NULL,
-    nombre_rol VARCHAR(100)
+    nombre_rol VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE USUARIO (
     id_usuario SERIAL PRIMARY KEY,
-    contraseña_usuario VARCHAR(20),
-    email_usuario VARCHAR(20),
-    ubicación_usuario VARCHAR(20),
-    nombre_usuario VARCHAR(15),
+    contraseña_usuario VARCHAR(20) NOT NULL,
+    email_usuario VARCHAR(20) NOT NULL,
+    ubicación_usuario VARCHAR(20) NOT NULL,
+    nombre_usuario VARCHAR(15) NOT NULL,
     id_rol INT,
     FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
 CREATE TABLE proceso_de_compra ( 
   boleta VARCHAR(1000) PRIMARY KEY, 
-  metodo_pago VARCHAR(20),
+  metodo_pago VARCHAR(20) NOT NULL,
   id_usuario INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
@@ -29,26 +29,27 @@ CREATE TABLE proceso_de_compra (
 CREATE TABLE CARRITO(
     id_carrito SERIAL PRIMARY KEY,
     cantidad_videojuegos INT NOT NULL,
-    boleta VARCHAR(100),
-	  id_usuario INT,
+    boleta VARCHAR(1000) NOT NULL,
+    id_usuario INT,
     FOREIGN KEY(boleta) REFERENCES PROCESO_DE_COMPRA(boleta),
     FOREIGN KEY(id_usuario) REFERENCES USUARIO(id_usuario)
 );
 
 CREATE TABLE VIDEOJUEGO(
     id_videojuego SERIAL PRIMARY KEY,
-    url_imagen VARCHAR(20),
-    tipo VARCHAR(20),
+    url_imagen VARCHAR(20) NOT NULL,
+    tipo VARCHAR(20) NOT NULL,
     stock INT,
-    nombre_videojuego VARCHAR(20),
-    url_videojuego VARCHAR(20),
+    nombre_videojuego VARCHAR(20) NOT NULL,
+    url_videojuego VARCHAR(20) NOT NULL,
+    precio INT NOT NULL,
     id_carrito INT,
     FOREIGN KEY(id_carrito) REFERENCES CARRITO(id_carrito)
 );
 
 CREATE TABLE deseados (
   id_deseados SERIAL PRIMARY KEY,
-  lista_de_deseados VARCHAR(200),
+  lista_de_deseados VARCHAR(200) NOT NULL,
   id_ranking INT,
   FOREIGN KEY (id_ranking) REFERENCES ranking(id_ranking)
 );
@@ -64,9 +65,9 @@ CREATE TABLE DESEADOSxVIDEOJUEGOS (
     id_deseados INT,
     id_videojuego INT,
     FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados),
-    FOREIGN KEY (id_videojuego) REFERENCES videojuego(id_videojuego)
+    FOREIGN KEY (id_videojuego) REFERENCES videojuego(id_videojuego),
+    UNIQUE (id_deseados, id_videojuego)
 );
-
 
 CREATE TABLE VALORACIONxVIDEOJUEGO (
     id_valoracion INT,
@@ -79,7 +80,8 @@ CREATE TABLE USUARIOxVALORACION (
     id_usuario INT,
     id_valoracion INT,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion)
+    FOREIGN KEY (id_valoracion) REFERENCES valoracion(id_valoracion),
+    UNIQUE (id_usuario, id_valoracion)
 );
 
 CREATE TABLE DESEADOSxUSUARIO (
@@ -88,3 +90,47 @@ CREATE TABLE DESEADOSxUSUARIO (
     FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
+
+INSERT INTO ROL VALUES (DEFAULT, 'Permisos Jefe tienda', 'Jefe Tienda');
+INSERT INTO ROL VALUES (DEFAULT, 'Permisos Usuario', 'Usuario');
+INSERT INTO ROL VALUES (DEFAULT, 'Permisos Administrador', 'Administrador');
+INSERT INTO USUARIO VALUES (DEFAULT, '123513', 'pedro@mail.com', 'Peñalolen', 'Pedro02', 1);
+INSERT INTO USUARIO VALUES (DEFAULT, '21341', 'samuel@mail.com', 'La Calera', 'Samuel10', 2);
+INSERT INTO USUARIO VALUES (DEFAULT, '54113', 'eduardo@mail.com', 'Puente alto', 'Eduardo00', 3);
+INSERT INTO USUARIO VALUES (DEFAULT, '8765346', 'darwin@mail.com', 'Paine', 'Darwin123', 2);
+INSERT INTO USUARIO VALUES (DEFAULT, '6412913', 'benjamin@mail.com', 'Pucon', 'Benja1', 2);
+INSERT INTO ranking VALUES (DEFAULT, 'Mas ventas');
+INSERT INTO ranking VALUES (DEFAULT, 'Mas deseados');
+INSERT INTO proceso_de_compra VALUES ('BOL001', 'Debito', 2);
+INSERT INTO proceso_de_compra VALUES ('BOL002', 'Credito', 2);
+INSERT INTO proceso_de_compra VALUES ('BOL003', 'Mercado Pago', 3);
+INSERT INTO CARRITO VALUES (DEFAULT, 10, 'BOL001', 2);
+INSERT INTO CARRITO VALUES (DEFAULT, 8, 'BOL002', 2);
+INSERT INTO CARRITO VALUES (DEFAULT, 4, 'BOL003', 3);
+INSERT INTO videojuego (
+  url_imagen, tipo, stock, nombre_videojuego, url_videojuego, precio, id_carrito
+)
+VALUES
+('urlimg1', 'Lucha', 11, 'Mortal Kombat', 'urlgame1', 30000, 2),
+('urlimg2', 'Comida', 10, 'Overcooked', 'urlgame2', 18000, 2),
+('urlimg3', 'Aventura', 20, 'Spiderman', 'urlgame3', 35000, 2);
+INSERT INTO deseados VALUES (DEFAULT, 'Lista Deseados1', 2);
+INSERT INTO deseados VALUES (DEFAULT, 'Lista Deseados2', 2);
+INSERT INTO deseados VALUES (DEFAULT, 'Lista Deseados5', 2);
+INSERT INTO VALORACION VALUES (DEFAULT, 'GOTY', 2);
+INSERT INTO VALORACION VALUES (DEFAULT, 'Mas o menos el juego', 1);
+INSERT INTO VALORACION VALUES (DEFAULT, 'Me gusto mucho', 2);
+INSERT INTO VALORACION VALUES (DEFAULT, 'Buenísimo', 1);
+INSERT INTO DESEADOSxVIDEOJUEGOS VALUES (2, 2);
+INSERT INTO DESEADOSxVIDEOJUEGOS VALUES (1, 1);
+INSERT INTO DESEADOSxVIDEOJUEGOS VALUES (3, 2);
+INSERT INTO VALORACIONxVIDEOJUEGO VALUES (1, 1);
+INSERT INTO VALORACIONxVIDEOJUEGO VALUES (2, 3);
+INSERT INTO VALORACIONxVIDEOJUEGO VALUES (1, 2);
+INSERT INTO VALORACIONxVIDEOJUEGO VALUES (4, 1);
+INSERT INTO USUARIOxVALORACION VALUES (2, 2);
+INSERT INTO USUARIOxVALORACION VALUES (1, 1);
+INSERT INTO USUARIOxVALORACION VALUES (3, 1);
+INSERT INTO DESEADOSxUSUARIO VALUES (1, 2);
+INSERT INTO DESEADOSxUSUARIO VALUES (2, 1);
+INSERT INTO DESEADOSxUSUARIO VALUES (3, 2);
