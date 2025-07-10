@@ -91,6 +91,8 @@ CREATE TABLE DESEADOSxUSUARIO (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+//////////////////////////////insercion de valores//////////////////////////////////////////////////
+
 INSERT INTO ROL VALUES (DEFAULT, 'Permisos Jefe tienda', 'Jefe Tienda');
 INSERT INTO ROL VALUES (DEFAULT, 'Permisos Usuario', 'Usuario');
 INSERT INTO ROL VALUES (DEFAULT, 'Permisos Administrador', 'Administrador');
@@ -134,5 +136,7 @@ INSERT INTO USUARIOxVALORACION VALUES (3, 1);
 INSERT INTO DESEADOSxUSUARIO VALUES (1, 2);
 INSERT INTO DESEADOSxUSUARIO VALUES (2, 1);
 INSERT INTO DESEADOSxUSUARIO VALUES (3, 2);
+
+//////////////////////////////pruebas del excel//////////////////////////////////////////////////
 
 INSERT INTO USUARIO VALUES (DEFAULT, '5649874', 'Pedro')
