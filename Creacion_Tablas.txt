@@ -125,20 +125,18 @@ $$;
 CREATE OR REPLACE PROCEDURE reporte_ventas_usuario(id_usuario INT)
 LANGUAGE plpgsql
 AS $$
+DECLARE
+    nombre_juego TEXT;
 BEGIN
     RAISE NOTICE 'Videojuegos comprados por el usuario %:', id_usuario;
 
-    PERFORM v.nombre_videojuego
-    FROM videojuego v
-    JOIN carrito c ON v.id_carrito = c.id_carrito
-    WHERE c.id_usuario = id_usuario;
-    FOR v_nombre IN
-         SELECT v.nombre_videojuego
-         FROM videojuego v
-         JOIN carrito c ON v.id_carrito = c.id_carrito
-         WHERE c.id_usuario = id_usuario
+    FOR nombre_juego IN
+        SELECT v.nombre_videojuego
+        FROM videojuego v
+        JOIN carrito c ON v.id_carrito = c.id_carrito
+        WHERE c.id_usuario = id_usuario
     LOOP
-        RAISE NOTICE '→ %', v_nombre.nombre_videojuego;
+        RAISE NOTICE '- %', nombre_juego;
     END LOOP;
 END;
 $$;
