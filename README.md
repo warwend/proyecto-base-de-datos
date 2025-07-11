@@ -13,7 +13,7 @@ EQUIPO DE DESARROLLO
 APORTES AL PROYECTO
 
 Todos los integrantes aportaron de forma equitativa al proyecto, la mayoria de cambios se realizaron en persona o atravez de otras plataformas.
-El integrante Jordan Ibarra no pudo aparecer en el video del proyecto debido a problemas personales pero como se dijo con anterioridad si trabajo
+El integrante Jordan Ibarra no pudo aparecer en el video del proyecto debido a problemas personales, pero como se dijo con anterioridad si trabajo
 durante toda la realizacion del proyecto como todos los integrantes.
 
 CARACTERISTICAS 
