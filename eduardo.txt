@@ -51,12 +51,14 @@ SELECT u.nombre_usuario, v.nombre_videojuego FROM deseadosxusuario dxu JOIN usua
 -- TC11
 dxv.id_deseados JOIN videojuego v ON dxv.id_videojuego = v.id_videojuego;
 -- TC12
+(Comprobar antes y despues: SELECT * FROM carrito;)
 UPDATE carrito SET cantidad_videojuegos = cantidad_videojuegos + 1 WHERE id_carrito = 1;
 -- TC13
 SELECT u.nombre_usuario, v.nombre_videojuego FROM carrito c JOIN usuario u ON c.id_usuario = u.id_usuario JOIN videojuego v ON c.id_carrito = v.id_carrito;
 -- TC14
 SELECT u.nombre_usuario, SUM(v.precio * c.cantidad_videojuegos) AS total FROM carrito c JOIN usuario u ON c.id_usuario = u.id_usuario JOIN videojuego v ON v.id_carrito = c.id_carrito GROUP BY u.nombre_usuario;
 -- TC15
+(Comprobar antes y despues: SELECT * FROM carrito;)
 UPDATE carrito
 SET cantidad_videojuegos = 
     CASE 
@@ -64,3 +66,7 @@ SET cantidad_videojuegos =
         ELSE 0
     END
 WHERE id_carrito = 1;
+-- TC23
+SELECT v.nombre_videojuego, COUNT(*) AS valoraciones FROM valoracionxvideojuego vxv JOIN videojuego v ON vxv.id_videojuego = v.id_videojuego GROUP BY v.nombre_videojuego ORDER BY valoraciones DESC;
+-- TC25
+SELECT u.ubicación_usuario, v.nombre_videojuego FROM usuario u JOIN proceso_de_compra p ON u.id_usuario = p.id_usuario JOIN carrito c ON p.boleta = c.boleta JOIN videojuego v ON c.id_carrito = v.id_carrito;
