@@ -1,8 +1,8 @@
-Proyecto Base de Datos - Plataforma de Videojuegos
+PROYECTO BASE DE DATOS  - PLATAFORMA DE VIDEOJUEGOS 
 
 Este proyecto implementa una base de datos relacional para gestionar una plataforma de venta, valoración y administración de videojuegos, usuarios y carritos de compra. Permite realizar operaciones como seguimiento de compras, rankings, listas de deseados y valoraciones.
 
-Características
+CARACTERISTICAS 
 
 Gestión de usuarios y roles: Control de acceso mediante roles con distintos permisos.
 
@@ -18,7 +18,7 @@ Auditoría y validaciones: Uso de triggers para registrar operaciones sobre vide
 
 Procedimientos almacenados: Reportes automáticos por usuario y actualizaciones masivas de precios.
 
-Estructura de la Base de Datos
+ESTRUCTURA DE LA BASE DE DATOS 
 
 Tablas principales:
 USUARIO, ROL: Información personal y control de acceso.
@@ -27,14 +27,14 @@ DESEADOS, VALORACION, RANKING: Funcionalidades sociales y de interacción,
 Tablas intermedias (relaciones N:M):
 DESEADOSxVIDEOJUEGOS, VALORACIONxVIDEOJUEGO, USUARIOxVALORACION, DESEADOSxUSUARIO
 
-Triggers:
+TRIGGERS:
 
 trg_auditoria_videojuego: Muestra mensajes al insertar, modificar o eliminar videojuegos.
 Procedimientos:
 actualizar_precio_tipo(tipo, precio): Cambia el precio de todos los juegos de un tipo específico.
 reporte_ventas_usuario(id_usuario): Muestra los videojuegos comprados por un usuario.
 
-Uso
+USO
 
 Ejecuta los scripts de creación e inserción para inicializar la base de datos.
 Utiliza consultas como:
