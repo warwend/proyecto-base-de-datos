@@ -25,3 +25,42 @@ CREATE TABLE deseadosxusuario (
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
   FOREIGN KEY (id_deseados) REFERENCES deseados(id_deseados)
 //////////////////////////////////////////////////////////
+SELECT u.nombre_usuario, v.nombre_videojuego FROM deseadosxusuario dxu JOIN usuario u ON dxu.id_usuario = u.id_usuario JOIN deseados d ON dxu.id_deseados = d.id_deseados JOIN deseadosxvideojuegos dxv ON d.id_deseados = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- TC11
+dxv.id_deseados JOIN videojuego v ON dxv.id_videojuego = v.id_videojuego;
+-- TC12
+UPDATE carrito SET cantidad_videojuegos = cantidad_videojuegos + 1 WHERE id_carrito = 1;
+-- TC13
+SELECT u.nombre_usuario, v.nombre_videojuego FROM carrito c JOIN usuario u ON c.id_usuario = u.id_usuario JOIN videojuego v ON c.id_carrito = v.id_carrito;
+-- TC14
+SELECT u.nombre_usuario, SUM(v.precio * c.cantidad_videojuegos) AS total FROM carrito c JOIN usuario u ON c.id_usuario = u.id_usuario JOIN videojuego v ON v.id_carrito = c.id_carrito GROUP BY u.nombre_usuario;
+-- TC15
+UPDATE carrito
+SET cantidad_videojuegos = 
+    CASE 
+        WHEN cantidad_videojuegos > 0 THEN cantidad_videojuegos - 1
+        ELSE 0
+    END
+WHERE id_carrito = 1;
