@@ -36,3 +36,5 @@ UPDATE videojuego SET stock = stock + 1 WHERE nombre_videojuego = 'TriggerTest';
 DELETE FROM videojuego WHERE nombre_videojuego = 'TriggerTest';
 CALL actualizar_precio_tipo('Lucha', 15);
 CALL reporte_ventas_usuario(2);
+--TC32
+SELECT * FROM obtener_ventas();
