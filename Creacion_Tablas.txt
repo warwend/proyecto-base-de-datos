@@ -142,3 +142,31 @@ BEGIN
     END LOOP;
 END;
 $$;
+
+CREATE OR REPLACE FUNCTION obtener_ventas()
+RETURNS TABLE (
+    nombre_usuario VARCHAR,
+    nombre_videojuego VARCHAR,
+    fecha_compra DATE,
+    monto INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        u.nombre_usuario,
+        v.nombre_videojuego,
+        p.fecha_compra,
+        v.precio
+    FROM 
+        usuario u
+    JOIN 
+        proceso_de_compra p ON u.id_usuario = p.id_usuario
+    JOIN 
+        carrito c ON p.boleta = c.boleta
+    JOIN 
+        videojuego v ON c.id_carrito = v.id_carrito;
+END;
+$$;
+
