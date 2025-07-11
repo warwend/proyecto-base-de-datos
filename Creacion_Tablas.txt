@@ -70,6 +70,11 @@ CREATE TABLE DESEADOSxVIDEOJUEGOS (
     UNIQUE (id_deseados, id_videojuego)
 );
 
+CREATE TABLE categoria_permitida (
+    nombre_videojuego VARCHAR(20) PRIMARY KEY,
+    categoria_correcta VARCHAR(20) NOT NULL
+);
+
 CREATE TABLE VALORACIONxVIDEOJUEGO (
     id_valoracion INT,
     id_videojuego INT,
