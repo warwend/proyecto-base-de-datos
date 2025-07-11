@@ -10,7 +10,7 @@ INSERT INTO ranking VALUES (DEFAULT, 'Mas ventas');
 INSERT INTO ranking VALUES (DEFAULT, 'Mas deseados');
 INSERT INTO proceso_de_compra VALUES ('BOL001', 'Debito');
 INSERT INTO proceso_de_compra VALUES ('BOL002', 'Credito');
-INSERT INTO proceso_de_compra VALUES ('BOL003', 'Mercado Pago', 3);
+INSERT INTO proceso_de_compra VALUES ('BOL003', 'Mercado Pago');
 INSERT INTO CARRITO VALUES (DEFAULT, 10, 'BOL001', 2);
 INSERT INTO CARRITO VALUES (DEFAULT, 8, 'BOL002', 2);
 INSERT INTO CARRITO VALUES (DEFAULT, 4, 'BOL003', 3);
