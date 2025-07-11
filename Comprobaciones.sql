@@ -21,7 +21,10 @@ SELECT id_deseados, id_videojuego, COUNT(*) FROM deseadosxvideojuegos GROUP BY i
 -- TC11
 SELECT u.nombre_usuario, v.nombre_videojuego FROM deseadosxusuario dxu JOIN usuario u ON dxu.id_usuario = u.id_usuario JOIN deseados d ON dxu.id_deseados = d.id_deseados JOIN deseadosxvideojuegos dxv ON d.id_deseados = dxv.id_deseados JOIN videojuego v ON dxv.id_videojuego = v.id_videojuego;
 -- TC12
+--Comprobar antes y despues: SELECT * FROM carrito;
+SELECT * FROM carrito;
 UPDATE carrito SET cantidad_videojuegos = cantidad_videojuegos + 1 WHERE id_carrito = 1;
+SELECT * FROM carrito;
 -- TC13
 SELECT u.nombre_usuario, v.nombre_videojuego FROM carrito c JOIN usuario u ON c.id_usuario = u.id_usuario JOIN videojuego v ON c.id_carrito = v.id_carrito;
 -- TC14
