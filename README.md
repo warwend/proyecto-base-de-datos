@@ -2,6 +2,20 @@ PROYECTO BASE DE DATOS  - PLATAFORMA DE VIDEOJUEGOS
 
 Este proyecto implementa una base de datos relacional para gestionar una plataforma de venta, valoración y administración de videojuegos, usuarios y carritos de compra. Permite realizar operaciones como seguimiento de compras, rankings, listas de deseados y valoraciones.
 
+EQUIPO DE DESARROLLO
+
+-Darwin Gutierrez
+-Benjamin Monardez
+-Eduardo Velasquez
+-Pedro Rodriguez Campos
+-Jordan Ibarra 
+
+APORTES AL PROYECTO
+
+Todos los integrantes aportaron de forma equitativa al proyecto, la mayoria de cambios se realizaron en persona o atravez de otras plataformas.
+El integrante Jordan Ibarra no pudo aparecer en el video del proyecto debido a problemas personales pero como se dijo con anterioridad si trabajo
+durante toda la realizacion del proyecto como todos los integrantes.
+
 CARACTERISTICAS 
 
 Gestión de usuarios y roles: Control de acceso mediante roles con distintos permisos.
