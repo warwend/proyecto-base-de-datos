@@ -169,4 +169,26 @@ BEGIN
         videojuego v ON c.id_carrito = v.id_carrito;
 END;
 $$;
+--comprobacion 6
+CREATE OR REPLACE FUNCTION validar_categoria_videojuego()
+RETURNS TRIGGER AS $$
+DECLARE
+    tipo_valido TEXT;
+BEGIN
+    SELECT categoria_correcta INTO tipo_valido
+    FROM categoria_permitida
+    WHERE nombre_videojuego = NEW.nombre_videojuego;
 
+    IF tipo_valido IS NOT NULL AND tipo_valido <> NEW.tipo THEN
+        RAISE EXCEPTION 'Categoría incorrecta para el videojuego %: se esperaba "%", pero se ingresó "%".',
+        NEW.nombre_videojuego, tipo_valido, NEW.tipo;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_validar_categoria
+BEFORE INSERT OR UPDATE ON videojuego
+FOR EACH ROW
+EXECUTE FUNCTION validar_categoria_videojuego();
