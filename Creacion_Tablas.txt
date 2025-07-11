@@ -22,6 +22,7 @@ CREATE TABLE USUARIO (
 CREATE TABLE proceso_de_compra ( 
   boleta VARCHAR(1000) PRIMARY KEY, 
   metodo_pago VARCHAR(20) NOT NULL,
+  fecha_compra DATE DEFAULT CURRENT_DATE,
   id_usuario INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
